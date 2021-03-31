@@ -7,8 +7,7 @@ require('dotenv').config();
 
 
 const app = express();
-
-// const postsRoute = require('./routes/posts');
+const postsRoute = require('./routes/api');
 
 
 // middleware
@@ -16,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-// app.use('/posts', postsRoute);
+app.use('/api', postsRoute);
 
 // Db connect
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
