@@ -1,31 +1,13 @@
 
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { signUpIntialValue, singUpValidationSchema } from './accountValidationSchema';
+
 
 
 const SignUpView = () => {
     return (
-        <Formik initialValues={{
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            password: ''
-        }}
-            validationSchema={Yup.object().shape({
-                firstName: Yup.string()
-                    .required('First Name is required'),
-                lastName: Yup.string()
-                    .required('Last Name is required'),
-                email: Yup.string()
-                    .email('Email is invalid')
-                    .required('Email is required'),
-                phone: Yup.string()
-                    .min(10, 'Phone Minimum 10 digits')
-                    .required('Phone is required'),
-                password: Yup.string()
-                    .required('Password is required')
-            })}
+        <Formik initialValues={signUpIntialValue}
+            validationSchema={singUpValidationSchema}
             onSubmit={fields => {
                 alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
             }}
@@ -70,30 +52,6 @@ const SignUpView = () => {
                 </Form>
             )}
         />
-        // <form>
-        //     <div className="container my-3">
-        //         <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block" >
-        //             <div className="mb-3">
-        //                 <label for="firstName" className="form-label">First Name</label>
-        //                 <input type="text" className="form-control" id="firstName" />
-        //             </div>
-        //             <div className="mb-3">
-        //                 <label for="lastName" className="form-label">Last Name</label>
-        //                 <input type="text" className="form-control" id="lastName" />
-        //             </div>
-        //             <div className="mb-3">
-        //                 <label for="phoneNum" className="form-label">Phone Number</label>
-        //                 <input type="number" className="form-control" id="phoneNum" />
-        //             </div>
-        //             <div className="mb-3">
-        //                 <label for="password" className="form-label">Password</label>
-        //                 <input type="password" className="form-control" id="password" />
-        //             </div>
-        //             <button type="submit" className="btn btn-primary btn-block mb-3">Submit</button>
-        //         </div>
-        //     </div>
-        // </form>
-
     );
 };
 
