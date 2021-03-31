@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 var bodyParser = require('body-parser')
-var cors = require('cors')
+var cors = require('cors');
 require('dotenv').config();
 
 
-
+//
 const app = express();
 const postsRoute = require('./routes/api');
 
