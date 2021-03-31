@@ -8,4 +8,9 @@ const authSchema = Joi.object({
     phoneNumber: Joi.number().required()
 })
 
-module.exports = authSchema;
+const loginSchema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+})
+
+module.exports = { authSchema, loginSchema }

@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
-const authValidation = require('../validations/auth/authValidation');
+const cutomValidation = require('../validations/auth/authValidation');
 
 // base url :- api/auth
 
-router.post('/register', authValidation, authController.register)
+router.post('/login', cutomValidation.loginValidation, authController.login)
+router.post('/register', cutomValidation.authValidation, authController.register)
 
 
 module.exports = router;
