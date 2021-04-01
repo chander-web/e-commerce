@@ -17,6 +17,7 @@ function Home() {
 
     return (
         <>
+            <axiosInstance />
             <Spinner />
             <ToastContainer
                 position="top-center"
