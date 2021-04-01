@@ -1,9 +1,11 @@
 
 
 const SignInView = () => {
+
     return (
         <form>
             <div className="container my-3">
+
                 <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block" >
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Email address</label>
@@ -17,7 +19,6 @@ const SignInView = () => {
                 </div>
             </div>
         </form>
-
     );
 };
 

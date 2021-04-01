@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import Home from './container/home/Home';
+import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Home />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
