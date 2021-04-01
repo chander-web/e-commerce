@@ -1,24 +1,39 @@
 
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { signInIntialValue, singInValidationSchema } from './accountValidationSchema';
 
 const SignInView = () => {
 
     return (
-        <form>
-            <div className="container my-3">
-
-                <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block" >
-                    <div className="mb-3">
-                        <label for="exampleInputEmail1" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <Formik initialValues={signInIntialValue}
+            validationSchema={singInValidationSchema}
+            onSubmit={fields => {
+                alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
+            }}
+            render={({ errors, status, touched }) => (
+                <Form>
+                    <div className="container my-3">
+                        <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block">
+                            <h4>Login</h4>
+                            <hr />
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="confirmPassword">Password</label>
+                                <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group mt-3">
+                                <button type="submit" className="btn btn-primary mr-2">Login</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" />
-                    </div>
-                    <button type="submit" className="btn btn-primary btn-block mb-3">Submit</button>
-                </div>
-            </div>
-        </form>
+                </Form>
+            )}
+        />
     );
 };
 

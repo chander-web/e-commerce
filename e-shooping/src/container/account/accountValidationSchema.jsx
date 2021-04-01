@@ -8,6 +8,11 @@ export const signUpIntialValue = {
     password: ''
 }
 
+export const signInIntialValue = {
+    email: '',
+    password: ''
+}
+
 export const singUpValidationSchema = () => {
     return Yup.object().shape({
         firstName: Yup.string()
@@ -20,6 +25,17 @@ export const singUpValidationSchema = () => {
         phone: Yup.string()
             .min(10, 'Phone Minimum 10 digits')
             .required('Phone is required'),
+        password: Yup.string()
+            .required('Password is required')
+    })
+}
+
+
+export const singInValidationSchema = () => {
+    return Yup.object().shape({
+        email: Yup.string()
+            .email('Email is invalid')
+            .required('Email is required'),
         password: Yup.string()
             .required('Password is required')
     })
