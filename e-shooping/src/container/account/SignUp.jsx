@@ -2,8 +2,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { signUpIntialValue, singUpValidationSchema } from './accountValidationSchema';
 
-
-
 const SignUpView = () => {
     return (
         <Formik initialValues={signUpIntialValue}
@@ -34,7 +32,7 @@ const SignUpView = () => {
                                 <ErrorMessage name="email" component="div" className="invalid-feedback" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Phone</label>
+                                <label htmlFor="phone">Phone</label>
                                 <Field name="phone" type="text" className={'form-control' + (errors.phone && touched.phone ? ' is-invalid' : '')} />
                                 <ErrorMessage name="phone" component="div" className="invalid-feedback" />
                             </div>
