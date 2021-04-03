@@ -7,7 +7,6 @@ exports.pagination = (model) => {
         const startIndex = (page - 1) * pageSize;
         try {
             const productsResult = await model.find().skip(startIndex).limit(pageSize);
-            console.log(productsResult);
             if (productsResult) {
                 res.paginatedResult = productsResult;
                 next();
