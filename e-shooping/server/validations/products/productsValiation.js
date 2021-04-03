@@ -1,10 +1,10 @@
-const validationSchema = require('./categorySchema');
+const productsSchema = require('./productSchema');
 const apiResponse = require('../../helpers/apiResponse');
 var fs = require('fs');
 
-const saveCategoryValidation = (req, res, next) => {
+const saveProductsValidation = (req, res, next) => {
     // delete the image file
-    const result = validationSchema.saveCategorySchema.validate(req.body);
+    const result = productsSchema.productCategory.validate(req.body);
     if (result.error) {
         fs.unlink(`${req.file.path}`, (err) => {
             if (err) {
@@ -22,4 +22,4 @@ const saveCategoryValidation = (req, res, next) => {
 
 
 
-module.exports = { saveCategoryValidation };
+module.exports = { saveProductsValidation };

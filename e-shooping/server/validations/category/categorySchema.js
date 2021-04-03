@@ -1,8 +1,9 @@
 const Joi = require('joi');
 
 const saveCategorySchema = Joi.object({
-    categoryImage: Joi.string(),
-    categoryName: Joi.string().required(),
+    image: Joi.string(),
+    category: Joi.string().required(),
+    categoryTitle: Joi.string().required(),
 
 });
 

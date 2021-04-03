@@ -13,7 +13,7 @@ const postsRoute = require('./routes/api');
 
 
 // public folder
-app.use(express.static('./public'));
+app.use(express.static('public'));
 
 // middleware
 app.use(cors());

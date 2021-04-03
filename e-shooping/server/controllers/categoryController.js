@@ -1,28 +1,33 @@
-const User = require('../models/UserModel');
 const apiResponse = require('../helpers/apiResponse');
-const bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
 require('dotenv').config();
+const ImageUpload = require('../helpers/imageUpload');
+const CategoryModel = require('../models/CategoryModel');
 
-exports.saveCategory = [async (req, res) => {
-    const result = req.body;
-    console.log(result);
-    // const isEmailExists = await User.findOne({ email: result.email });
-    // if (!isEmailExists) {
-    //     // save register 
-    //     const user = new User(result);
-    //     const salt = await bcrypt.genSalt(10);
-    //     user.password = await bcrypt.hash(user.password, salt);
+exports.saveCategory = [(req, res) => {
+    ImageUpload.isFileExist(req);
+    const category = new CategoryModel({
+        image: `upload/${req.body.category}/${req.file.filename}`,
+        category: req.body.category,
+        categoryTitle: req.body.categoryTitle
+    });
+    category.save()
+        .then(data => {
+            apiResponse.successResponseWithData(res, 'Created category SuccesFully', data);
+        })
+}]
 
-    //     user.save()
-    //         .then(data => {
-    //             apiResponse.successResponseWithData(res, 'Register created SuccesFully', data);
-    //         })
-    // } else {
+exports.allCategory = [async (req, res) => {
+    try {
+        const categoryResult = await CategoryModel.find();
+        if (categoryResult) {
+            apiResponse.successResponseWithList(res, categoryResult);
+        }
+    } catch (e) {
+        apiResponse.ErrorResponse(res, 'some error occurred while retrieving category.');
+    }
 
-    //     apiResponse.ConflictResponse(res, 'Email already Exists');
 
-    // }
-}
-]
+
+
+}]
 

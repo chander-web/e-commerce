@@ -40,6 +40,14 @@ exports.validationErrorWithData = (res, msg, data) => {
     return res.status(400).json(resData);
 };
 
+exports.successResponseWithList = (res, data) => {
+    var resData = {
+        status: true,
+        data: data
+    };
+    return res.status(200).json(resData);
+};
+
 exports.validationError = (res, msg) => {
     var resData = {
         status: false,
