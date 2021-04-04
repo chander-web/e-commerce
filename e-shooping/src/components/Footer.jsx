@@ -1,5 +1,3 @@
-import { faAndroid, faApple, faFacebookF, faInstagram, faTwitter, faWindows, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactComponent as IconBadgeAd } from "bootstrap-icons/icons/badge-ad.svg";
 import { ReactComponent as IconBriefcase } from "bootstrap-icons/icons/briefcase.svg";
 import { ReactComponent as IconEnvelope } from "bootstrap-icons/icons/envelope.svg";
@@ -12,46 +10,6 @@ const Footer = () => {
     return (
         <React.Fragment>
             <footer>
-                <div className="container-fluid bg-primary">
-                    <div className="row ">
-                        <div className="col-md-9 py-3 text-white">
-                            Get connected with us on social networks!
-            </div>
-                        <div className="col-md-3 py-3 text-center text-white">
-                            <Link to="/" title="Apple">
-                                <FontAwesomeIcon icon={faApple} className="text-light mr-3" />
-                            </Link>
-                            <Link to="/" title="Windows">
-                                <FontAwesomeIcon icon={faWindows} className="text-light mr-3" />
-                            </Link>
-                            <Link to="/" title="Android">
-                                <FontAwesomeIcon icon={faAndroid} className="text-light mr-3" />
-                            </Link>
-              |
-              <Link to="/" title="Twitter">
-                                <FontAwesomeIcon
-                                    icon={faTwitter}
-                                    className="text-light ml-3 mr-3"
-                                />
-                            </Link>
-                            <Link to="/" title="Facebook">
-                                <FontAwesomeIcon
-                                    icon={faFacebookF}
-                                    className="text-light mr-3"
-                                />
-                            </Link>
-                            <Link to="/" title="Instagram">
-                                <FontAwesomeIcon
-                                    icon={faInstagram}
-                                    className="text-light mr-3"
-                                />
-                            </Link>
-                            <Link to="/" title="Youtube">
-                                <FontAwesomeIcon icon={faYoutube} className="text-light mr-3" />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
                 <div className="container-fluid bg-dark text-white">
                     <div className="row ">
                         <div className="col-md-3 py-3">
@@ -62,7 +20,7 @@ const Footer = () => {
                                 industry. Lorem Ipsum has been the industry's standard dummy
                                 text ever since the 1500s, when an unknown printer took a galley
                                 of type and scrambled it to make a type specimen book.
-              </p>
+                      </p>
                         </div>
                         <div className="col-md-3 py-3">
                             <div className="h6">Products</div>
