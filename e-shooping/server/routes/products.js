@@ -13,6 +13,7 @@ router.post('/saveProducts', imageUploader.simpleUploadExecute('products'),
 
 router.post('/allProducts', paginationMiddleware.pagination(ProductsModel), productsController.allProducts)
 
+router.get('/selectedProduct/:id', productsController.selectedProduct)
 
 
 module.exports = router;
