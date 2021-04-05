@@ -1,24 +1,17 @@
 
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { APIURL } from '../../helpers/constrants';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { APIURL } from '../../helpers/constrants';
 
 const Main = () => {
-
     const [data, setData] = useState([]);
     useEffect(async () => {
         const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(
-                {
-                    page: 1,
-                    pageSize: 10
-                }
-            )
+            page: 1,
+            pageSize: 10
         };
-        const result = await axios(APIURL.ALLPRODUCTS, requestOptions);
+        const result = await axios.post(APIURL.ALLPRODUCTS, requestOptions);
         setData(result.data.data);
     }, []);
 
@@ -33,7 +26,7 @@ const Main = () => {
                         <div className="col-md-3" key={item.productTitle} >
                             <Link to="/" className="text-decoration-none">
                                 <img
-                                    src={item.image}
+                                    src={`http://localhost:4000/${item.image}`}
                                     className="img-fluid rounded-circle"
                                     alt="..."
                                 />
