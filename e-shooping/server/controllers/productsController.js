@@ -13,7 +13,7 @@ exports.saveProducts = [(req, res) => {
 
 
 exports.allProducts = [async (req, res) => {
-    apiResponse.successResponseWithList(res, res.paginatedResult);
+    apiResponse.successResponseWithListPagination(res, res.paginatedResult);
 }]
 
 

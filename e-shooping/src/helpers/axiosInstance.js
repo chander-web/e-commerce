@@ -23,6 +23,7 @@ const AxiosInstanceCopy = () => {
             config.url = baseURL + config.url;
             setAuthorization(config);
             dispatch(startLoading());
+
             return config;
         }, function (error) {
             // Do something with request error
