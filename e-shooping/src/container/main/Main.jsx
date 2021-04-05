@@ -20,7 +20,7 @@ const Main = () => {
         };
         const result = await axios(APIURL.ALLPRODUCTS, requestOptions);
         setData(result.data.data);
-    });
+    }, []);
 
     return (
         <>
