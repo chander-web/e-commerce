@@ -31,7 +31,7 @@ function Home() {
             />
             <Header />
             <TopMenu />
-            <Routes />
+            <Routes />   
             <Footer />
         </>
     );

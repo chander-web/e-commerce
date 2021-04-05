@@ -7,7 +7,6 @@ import { signInIntialValue, singInValidationSchema } from './accountValidationSc
 const SignInView = () => {
     const loginEvent = async (fields) => {
         const result = await axios.post(APIURL.LOGIN, fields);
-
     }
     return (
         <Formik initialValues={signInIntialValue}
