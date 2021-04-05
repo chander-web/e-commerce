@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import Spinner from "../components/spinner/Spinner";
 import { startLoading, stopLoading } from '../redux/spinner/spinnerAction';
 import { APIURL } from "./constrants";
-import { errorMsg } from "./toastyMessage";
 
 const baseURL = APIURL.API_BASE_URL;
 
@@ -38,11 +37,11 @@ const AxiosInstanceCopy = () => {
             return response;
         }, function (error) {
             dispatch(stopLoading());
-            const statusCode = error.response.status;
-            const statusMessage = error.response.data.message;
-            if (statusCode != 200) {
-                errorMsg(statusMessage);
-            }
+            // const statusCode = error.response.status;
+            // const statusMessage = error.response.data.message;
+            // if (statusCode != 200) {
+            //     errorMsg(statusMessage);
+            // }
             // Do something with response error
             return Promise.reject(error);
 
