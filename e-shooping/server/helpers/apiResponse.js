@@ -47,6 +47,14 @@ exports.successResponseWithList = (res, data) => {
     };
     return res.status(200).json(resData);
 };
+exports.successResponseWithListPagination = (res, data) => {
+    var resData = {
+        status: true,
+        data: data,
+        totalCount: res.totalItemCount
+    };
+    return res.status(200).json(resData);
+};
 
 exports.validationError = (res, msg) => {
     var resData = {

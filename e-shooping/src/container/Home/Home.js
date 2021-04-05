@@ -13,6 +13,9 @@ import './Home.css';
 
 
 
+
+
+
 function Home() {
 
     return (
@@ -31,7 +34,7 @@ function Home() {
             />
             <Header />
             <TopMenu />
-            <Routes />   
+            <Routes />
             <Footer />
         </>
     );

@@ -7,8 +7,10 @@ exports.pagination = (model) => {
         const startIndex = (page - 1) * pageSize;
         try {
             const productsResult = await model.find().skip(startIndex).limit(pageSize);
+            const totalItemCount = await model.find().count()
             if (productsResult) {
                 res.paginatedResult = productsResult;
+                res.totalItemCount = totalItemCount;
                 next();
             }
         } catch (e) {
