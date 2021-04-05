@@ -1,42 +1,109 @@
-
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { lazy, useEffect, useState } from 'react';
+import Pagination from "react-js-pagination";
+import { useParams } from 'react-router-dom';
 import { APIURL } from '../../helpers/constrants';
+const CardProductGrid = lazy(() => import('../../components/card/CardProductList'));
 
-const Main = () => {
-    const [data, setData] = useState([]);
-    useEffect(async () => {
-        const requestOptions = {
-            page: 1,
-            pageSize: 10
-        };
-        const result = await axios.post(APIURL.ALLPRODUCTS, requestOptions);
-        setData(result.data.data);
-    }, []);
 
+
+const Main = _ => {
+    const param = useParams();
+
+    const requestOptions = {
+        page: 1,
+        pageSize: 10,
+        categoryId: null
+    };
+    const [products, setProducts] = useState([]);
+    const [totalCount, setTotalCount] = useState(0);
+    const [apiRequest, setApiRequest] = useState(requestOptions);
+
+
+    useEffect(() => {
+        loadProducts();
+    }, [apiRequest, param]);
+
+
+    const loadProducts = async () => {
+        const result = await axios.post(APIURL.ALLPRODUCTS + '/' + param.id, apiRequest);
+        setProducts(result.data.data);
+        setTotalCount(result.data.totalCount);
+    }
+
+    const handlePageChange = (pageNumber) => {
+        requestOptions.page = pageNumber;
+        setApiRequest(requestOptions);
+    }
     return (
-        <>
-            <div className="bg-info bg-gradient p-3 text-center mb-3">
-                <h4 className="m-0">Explore Fashion Collection</h4>
-            </div>
-            <div className="container">
-                <div className="row">
-                    {data.map(item => (
-                        <div className="col-md-3" key={item.productTitle} >
-                            <Link to="/" className="text-decoration-none">
-                                <img
-                                    src={`http://localhost:4000/${item.image}`}
-                                    className="img-fluid rounded-circle"
-                                    alt="..."
-                                />
-                                <div className="text-center h6">{item.productTitle}</div>
-                            </Link>
-                        </div>
-                    ))}
+        <div className="container-fluid mb-3">
+            <div className="row">
+                <div className="col-md-3">
+                </div>
+                <div className="col-md-9">
+                    <div className="btn-group ml-3" role="group">
+                        {/* <button
+                        aria-label="Grid"
+                        type="button"
+                        onClick={() => this.onChangeView("grid")}
+                        className={`btn ${
+                            this.state.view === "grid"
+                                ? "btn-primary"
+                                : "btn-outline-primary"
+                            }`}
+                    >
+                        <FontAwesomeIcon icon={faTh} />
+                    </button> */}
+                        {/* <button
+                        aria-label="List"
+                        type="button"
+                        onClick={() => this.onChangeView("list")}
+                        className={`btn ${
+                            this.state.view === "list"
+                                ? "btn-primary"
+                                : "btn-outline-primary"
+                            }`}
+                    >
+                        <FontAwesomeIcon icon={faBars} />
+                    </button> */}
+                    </div>
+                    <div className="row g-3">
+                        {/* {this.state.view === "grid" &&
+                  this.state.currentProducts.map((product, idx) => {
+                    return (
+                      <div key={idx} className="col-md-4">
+                        <CardProductGrid data={product} />
+                      </div>
+                    );
+                  })}
+                {this.state.view === "list" &&
+                  this.state.currentProducts.map((product, idx) => {
+                    return (
+                      <div key={idx} className="col-md-12">
+                        <CardProductList data={product} />
+                      </div>
+                    );
+                  })} */}
+                        {products.map(products => (
+                            <CardProductGrid data={products} />
+                        ))}
+
+                    </div>
+                    <hr />
+                    {/* pagination */}
+                    <Pagination
+                        activePage={apiRequest.page}
+                        itemsCountPerPage={apiRequest.pageSize}
+                        totalItemsCount={totalCount}
+                        pageRangeDisplayed={5}
+                        onChange={handlePageChange}
+                    />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
+
+
+
 export default Main;

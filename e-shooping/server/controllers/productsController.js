@@ -20,7 +20,6 @@ exports.allProducts = [async (req, res) => {
 exports.selectedProduct = [async (req, res) => {
     try {
         const id = req.params.id;
-        console.log(id);
         const productResult = await ProductsModel.findById(id);
         if (productResult) {
             apiResponse.successResponseWithList(res, productResult);
