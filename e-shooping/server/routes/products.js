@@ -11,7 +11,7 @@ const ProductsModel = require('../models/productsModel');
 router.post('/saveProducts', imageUploader.simpleUploadExecute('products'),
     productsValidation.saveProductsValidation, productsController.saveProducts)
 
-router.post('/allProducts', paginationMiddleware.pagination(ProductsModel), productsController.allProducts)
+router.post('/allProducts/:categoryId', paginationMiddleware.pagination(ProductsModel), productsController.allProducts)
 
 router.get('/selectedProduct/:id', productsController.selectedProduct)
 

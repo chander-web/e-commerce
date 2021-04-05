@@ -17,14 +17,14 @@ exports.saveCategory = [(req, res) => {
 }]
 
 exports.allCategory = [async (req, res) => {
-    // try {
-    //     const categoryResult = await CategoryModel.find();
-    //     if (categoryResult) {
-    //         apiResponse.successResponseWithList(res, categoryResult);
-    //     }
-    // } catch (e) {
-    //     apiResponse.ErrorResponse(res, 'some error occurred while retrieving category.');
-    // }
+    try {
+        const categoryResult = await CategoryModel.find();
+        if (categoryResult) {
+            apiResponse.successResponseWithList(res, categoryResult);
+        }
+    } catch (e) {
+        apiResponse.ErrorResponse(res, 'some error occurred while retrieving category.');
+    }
 
 
 

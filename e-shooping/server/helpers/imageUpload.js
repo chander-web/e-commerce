@@ -39,7 +39,6 @@ var storage = multer.diskStorage({
 exports.upload = multer({ storage: storage });
 
 exports.isFileExist = (req) => {
-    console.log(req);
     const dir = `./public/upload/${req.body.category}`;
 
     fs.exists(dir, exists => {

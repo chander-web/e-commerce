@@ -1,15 +1,19 @@
 import axios from 'axios';
 import React, { lazy, useEffect, useState } from 'react';
 import Pagination from "react-js-pagination";
+import { useParams } from 'react-router-dom';
 import { APIURL } from '../../helpers/constrants';
 const CardProductGrid = lazy(() => import('../../components/card/CardProductList'));
 
 
 
 const Tshirt = props => {
+    const param = useParams();
+    console.log(param);
     const requestOptions = {
         page: 1,
-        pageSize: 10
+        pageSize: 10,
+        categoryId: null
     };
     const [products, setProducts] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
@@ -22,7 +26,7 @@ const Tshirt = props => {
 
 
     const loadProducts = async () => {
-        const result = await axios.post(APIURL.ALLPRODUCTS, apiRequest);
+        const result = await axios.post(APIURL.ALLPRODUCTS + '/' + param.id, apiRequest);
         setProducts(result.data.data);
         setTotalCount(result.data.totalCount);
     }
