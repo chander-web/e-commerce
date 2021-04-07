@@ -2,11 +2,13 @@ import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactComponent as IconTruckFill } from "bootstrap-icons/icons/truck.svg";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 
 const CardProductList = (props) => {
     const product = props.data;
+    const { url } = useRouteMatch();
+
 
     return (
         <div className="card">
@@ -17,12 +19,12 @@ const CardProductList = (props) => {
                 <div className="col-md-6">
                     <div className="card-body">
                         <h6 className="card-subtitle mr-2 d-inline">
-                            <Link to={product.link} className="text-decoration-none">
+                            <Link to={`/products/details`} className="text-decoration-none">
                                 {product.productTitle}
                             </Link>
                         </h6>
 
-                        {/* <p className="small mt-2">{product.description}</p> */}
+                        <p className="small mt-2">{product.description}</p>
 
                     </div>
                 </div>

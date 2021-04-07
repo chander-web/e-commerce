@@ -3,41 +3,53 @@ import React, { lazy, useEffect, useState } from 'react';
 import Pagination from "react-js-pagination";
 import { useParams } from 'react-router-dom';
 import { APIURL } from '../../helpers/constrants';
+import { getStoreData } from '../../helpers/storage';
+
 const CardProductGrid = lazy(() => import('../../components/card/CardProductList'));
 
 
 
 const Main = _ => {
-    const param = useParams();
-
-    const requestOptions = {
+    const cateId = getStoreData('categoryId')
+    var requestOptions = {
         page: 1,
         pageSize: 10,
-        categoryId: null
     };
+
     const [products, setProducts] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
     const [apiRequest, setApiRequest] = useState(requestOptions);
-
+    const params = useParams();
 
     useEffect(() => {
+
         loadProducts();
-    }, [apiRequest, param]);
+    }, [apiRequest, params.data]);
 
 
     const loadProducts = async () => {
-        const result = await axios.post(APIURL.ALLPRODUCTS + '/' + param.id, apiRequest);
+        const finalRes = {
+            categoryId: cateId,
+            ...apiRequest
+        }
+
+
+
+        const result = await axios.post(APIURL.ALLPRODUCTS, finalRes);
         setProducts(result.data.data);
         setTotalCount(result.data.totalCount);
+
     }
 
     const handlePageChange = (pageNumber) => {
         requestOptions.page = pageNumber;
         setApiRequest(requestOptions);
+
     }
     return (
         <div className="container-fluid mb-3">
             <div className="row">
+
                 <div className="col-md-3">
                 </div>
                 <div className="col-md-9">
@@ -100,9 +112,11 @@ const Main = _ => {
                     />
                 </div>
             </div>
-        </div>
+
+        </div >
     );
 };
+
 
 
 

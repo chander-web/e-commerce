@@ -2,13 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { APIURL } from "../helpers/constrants";
+import { storeData } from "../helpers/storage";
 
 const TopMenu = () => {
+
     const [allCategory, setCategory] = useState([]);
     useEffect(async () => {
         const result = await axios.get(APIURL.ALLCATEGORY);
         setCategory(result.data.data);
     }, []);
+
+    const menuEvent = (categoryId) => {
+        storeData('categoryId', categoryId);
+    }
     return (
         <React.Fragment>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-0">
@@ -33,8 +39,8 @@ const TopMenu = () => {
                         <ul className="navbar-nav">
                             {
                                 allCategory.map(category => (
-                                    <li className="nav-item" key={category._id}>
-                                        <Link className="nav-link" to={`/products/${category.categoryTitle}/${category._id}`}>
+                                    <li className="nav-item" onClick={() => menuEvent(category._id)} key={category._id}>
+                                        <Link className="nav-link" to={`/products/${category.categoryTitle}`}>
                                             {category.categoryTitle}
                                         </Link>
                                     </li>
