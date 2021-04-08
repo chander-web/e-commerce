@@ -6,7 +6,11 @@ const SignUpView = lazy(() => import("../container/account/SignUp"));
 const ProductDetails = lazy(() => import("../container/product/Details"));
 
 
+
+
+
 const Routes = _ => {
+
     return (
         <>
             <Suspense
@@ -15,9 +19,8 @@ const Routes = _ => {
 
                     <Route path="/login" component={SignInView} />
                     <Route path="/register" component={SignUpView} />
-                    <Route path="/products/details" component={ProductDetails} />
+                    <Route path="/products/details/:productId" component={ProductDetails} />
                     <Route exact path="/products/:data" component={MainView} />
-
                 </Switch>
             </Suspense>
         </>

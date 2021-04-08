@@ -1,9 +1,24 @@
 import { faCartPlus, faHeart, faMinus, faPlus, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import { ReactComponent as IconStarFill } from "bootstrap-icons/icons/star-fill.svg";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import { APIURL } from "../../helpers/constrants";
 
 const Details = _ => {
+    const { productId } = useParams();
+    const [products, setProduct] = useState({});
+
+    useEffect(() => {
+        loadProduct();
+    }, []);
+
+    const loadProduct = async () => {
+        const result = await axios.get(`${APIURL.SINGLE_PRODUCT}/${productId}`);
+        setProduct(result.data.data);
+    }
+
     return (
         <div className="container-fluid mt-3">
             <div className="row">
@@ -11,30 +26,17 @@ const Details = _ => {
                     <div className="row mb-3">
                         <div className="col-md-5 text-center">
                             <img
-                                src="../../images/products/tshirt_red_480x400.webp"
+                                src={`${APIURL.BASE_PATH}${products.image}`}
                                 className="img-fluid mb-3"
                                 alt=""
                             />
-                            <img
-                                src="../../images/products/tshirt_grey_480x400.webp"
-                                className="border border-secondary mr-2" width="75"
-                                alt="..."
-                            />
-                            <img
-                                src="../../images/products/tshirt_black_480x400.webp"
-                                className="border border-secondary mr-2" width="75"
-                                alt="..."
-                            />
-                            <img
-                                src="../../images/products/tshirt_green_480x400.webp"
-                                className="border border-secondary mr-2" width="75"
-                                alt="..."
-                            />
+
                         </div>
                         <div className="col-md-7">
                             <h1 className="h5 d-inline mr-2">
-                                Great product name goes here
-                    </h1>
+
+                                {products.productTitle}
+                            </h1>
                             <span className="badge bg-success mr-2">New</span>
                             <span className="badge bg-danger mr-2">Hot</span>
                             <div className="mb-3">
@@ -51,7 +53,7 @@ const Details = _ => {
                                 <dt className="col-sm-3">Availability</dt>
                                 <dd className="col-sm-9">In stock</dd>
                                 <dt className="col-sm-3">Sold by</dt>
-                                <dd className="col-sm-9">Authorised Store</dd>
+                                <dd className="col-sm-9">{products.soldBy}</dd>
                                 <dt className="col-sm-3">Size</dt>
                                 <dd className="col-sm-9">
                                     <div className="form-check form-check-inline">
@@ -125,7 +127,7 @@ const Details = _ => {
                             </dl>
 
                             <div className="mb-3">
-                                <span className="font-weight-bold h5 mr-2">$1900</span>
+                                <span className="font-weight-bold h5 mr-2">${products.productPrice}</span>
                                 <del className="small text-muted mr-2">$2000</del>
                                 <span className="rounded p-1 bg-warning  mr-2 small">
                                     -$100
@@ -177,14 +179,13 @@ const Details = _ => {
                             </div>
                             <div>
                                 <p className="font-weight-bold mb-2 small">
-                                    Product Highlights
+                                    Product Description
                       </p>
                                 <ul className="small">
                                     <li>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </li>
-                                    <li>Etiam ullamcorper nibh eget faucibus dictum.</li>
-                                    <li>Cras consequat felis ut vulputate porttitor.</li>
+                                        {products.description}
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
