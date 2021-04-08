@@ -2,9 +2,14 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { APIURL } from '../../helpers/constrants';
+// import Details from '../product/Details';
 import { signInIntialValue, singInValidationSchema } from './accountValidationSchema';
 
+
+
 const SignInView = () => {
+
+
     const loginEvent = async (fields) => {
         const result = await axios.post(APIURL.LOGIN, fields);
     }
@@ -14,6 +19,7 @@ const SignInView = () => {
             onSubmit={fields => loginEvent(fields)}
             render={({ errors, status, touched }) => (
                 <Form>
+
                     <div className="container my-3">
                         <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block">
                             <h4>Login</h4>
@@ -36,6 +42,8 @@ const SignInView = () => {
                 </Form>
             )}
         />
+
+
     );
 };
 

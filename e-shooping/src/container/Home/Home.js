@@ -32,6 +32,7 @@ function Home() {
                 draggable={false}
                 pauseOnHover
             />
+
             <Header />
             <TopMenu />
             <Routes />
