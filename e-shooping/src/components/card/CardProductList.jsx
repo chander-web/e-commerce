@@ -2,12 +2,11 @@ import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactComponent as IconTruckFill } from "bootstrap-icons/icons/truck.svg";
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const CardProductList = (props) => {
     const product = props.data;
-    const { url } = useRouteMatch();
 
 
     return (

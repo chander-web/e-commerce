@@ -27,6 +27,7 @@ const Header = () => {
                             </Link>
                         </div>
                         <div className="col-md-5">
+                            {/* top search */}
                             <Search />
                         </div>
                         <div className="col-md-4">

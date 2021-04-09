@@ -6,18 +6,19 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { APIURL } from "../../helpers/constrants";
 
-const Details = _ => {
+const Details = () => {
     const { productId } = useParams();
     const [products, setProduct] = useState({});
 
     useEffect(() => {
+        const loadProduct = async () => {
+            const result = await axios.get(`${APIURL.SINGLE_PRODUCT}/${productId}`);
+            setProduct(result.data.data);
+        }
         loadProduct();
     }, []);
 
-    const loadProduct = async () => {
-        const result = await axios.get(`${APIURL.SINGLE_PRODUCT}/${productId}`);
-        setProduct(result.data.data);
-    }
+
 
     return (
         <div className="container-fluid mt-3">

@@ -10,7 +10,6 @@ const CardProductGrid = lazy(() => import('../../components/card/CardProductList
 
 
 const Main = _ => {
-    const cateId = getStoreData('categoryId')
     var requestOptions = {
         page: 1,
         pageSize: 10,
@@ -21,25 +20,24 @@ const Main = _ => {
     const [apiRequest, setApiRequest] = useState(requestOptions);
     const params = useParams();
 
-    useEffect(() => {
 
+    useEffect(() => {
+        const cateId = getStoreData('categoryId')
+        const loadProducts = async () => {
+            const finalRes = {
+                categoryId: cateId,
+                ...apiRequest
+            }
+            const result = await axios.post(APIURL.ALLPRODUCTS, finalRes);
+            setProducts(result.data.data);
+            setTotalCount(result.data.totalCount);
+
+        }
         loadProducts();
     }, [apiRequest, params.data]);
 
 
-    const loadProducts = async () => {
-        const finalRes = {
-            categoryId: cateId,
-            ...apiRequest
-        }
 
-
-
-        const result = await axios.post(APIURL.ALLPRODUCTS, finalRes);
-        setProducts(result.data.data);
-        setTotalCount(result.data.totalCount);
-
-    }
 
     const handlePageChange = (pageNumber) => {
         requestOptions.page = pageNumber;

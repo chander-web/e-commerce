@@ -11,7 +11,8 @@ const SignInView = () => {
 
 
     const loginEvent = async (fields) => {
-        const result = await axios.post(APIURL.LOGIN, fields);
+        // const result = 
+        await axios.post(APIURL.LOGIN, fields);
     }
     return (
         <Formik initialValues={signInIntialValue}
