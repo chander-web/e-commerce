@@ -9,7 +9,7 @@ const CardProductGrid = lazy(() => import('../../components/card/CardProductList
 
 
 
-const Main = _ => {
+const Main = () => {
   var requestOptions = {
     page: 1,
     pageSize: 10,
@@ -93,8 +93,8 @@ const Main = _ => {
                       </div>
                     );
                   })} */}
-            {products.map(products => 
-              <CardProductGrid data={products} />
+            {products.map(product => 
+              <CardProductGrid data={product} />
             )}
 
           </div>

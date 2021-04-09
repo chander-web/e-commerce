@@ -9,7 +9,7 @@ const ProductDetails = lazy(() => import('../container/product/Details'));
 
 
 
-const Routes = _ => {
+const Routes = () => {
 
   return (
     <>
@@ -20,7 +20,7 @@ const Routes = _ => {
           <Route path="/login" component={SignInView} />
           <Route path="/register" component={SignUpView} />
           <Route path="/products/details/:productId" component={ProductDetails} />
-          <Route exact path="/products/:data" component={MainView} />
+          <Route exact={true} path="/products/:data" component={MainView} />
         </Switch>
       </Suspense>
     </>

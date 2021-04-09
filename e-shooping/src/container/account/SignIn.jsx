@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
@@ -20,7 +19,8 @@ const SignInView = () => {
         validationSchema={singInValidationSchema}
         onSubmit={fields => loginEvent(fields)}
         render={({ errors, touched }) => 
-          (<Form>
+          // eslint-disable-next-line react/jsx-wrap-multilines
+          <Form>
 
             <div className="container my-3">
               <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block">
@@ -41,7 +41,7 @@ const SignInView = () => {
                 </div>
               </div>
             </div>
-          </Form>)
+          </Form>
         }
       />
     

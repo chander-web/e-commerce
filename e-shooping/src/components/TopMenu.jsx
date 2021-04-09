@@ -39,11 +39,12 @@ const TopMenu = () => {
             <ul className="navbar-nav">
               {
                 allCategory.map(category => 
-                  (<li className="nav-item" onClick={() => menuEvent(category._id)} key={category._id}>
+                  // eslint-disable-next-line react/jsx-wrap-multilines
+                  <li className="nav-item" onClick={() => menuEvent(category._id)} key={category._id}>
                     <Link className="nav-link" to={`/products/${category.categoryTitle}`}>
                       {category.categoryTitle}
                     </Link>
-                  </li> )
+                  </li> 
                 )}
 
 

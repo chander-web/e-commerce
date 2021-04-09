@@ -12,7 +12,8 @@ const SignUpView = () => {
           alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4));
         }}
         render={({ errors, touched }) => 
-          (<Form>
+          // eslint-disable-next-line react/jsx-wrap-multilines
+          <Form>
             <div className="container my-3">
               <div className="col-md-6 bg-light bg-gradient p-3 d-none d-md-block">
                 <h4>Register</h4>
@@ -49,7 +50,7 @@ const SignUpView = () => {
                 </div>
               </div>
             </div>
-          </Form>)
+          </Form>
         }
       />
     </React.Fragment>
