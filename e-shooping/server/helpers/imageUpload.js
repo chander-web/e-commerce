@@ -3,7 +3,6 @@ const multer = require('multer')
 const path = require('path');
 var fs = require('fs');
 
-
 var folderUrl = '';
 var simpleStorage = multer.diskStorage({
     destination: function (req, file, cb) {
