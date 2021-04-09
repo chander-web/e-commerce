@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const categoryController = require('../controllers/categoryController');
 const categoryValidation = require('../validations/category/categoryValidation');
@@ -6,9 +7,9 @@ const ImageUpload = require('../helpers/imageUpload');
 // base url :- api/category
 
 router.post('/saveCategory', ImageUpload.upload.single('image'),
-    categoryValidation.saveCategoryValidation, categoryController.saveCategory)
+  categoryValidation.saveCategoryValidation, categoryController.saveCategory);
 
-router.get('/allCategory', categoryController.allCategory)
+router.get('/allCategory', categoryController.allCategory);
 
 
 module.exports = router;

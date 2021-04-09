@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const commonController = require('../controllers/commonController');
 
@@ -6,7 +7,7 @@ const commonController = require('../controllers/commonController');
 
 
 
-router.get('/allOffers', commonController.allOffers)
+router.get('/allOffers', commonController.allOffers);
 
 
 module.exports = router;

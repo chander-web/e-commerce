@@ -1,7 +1,7 @@
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-var bodyParser = require('body-parser')
-var cors = require('cors');
 
 require('dotenv').config();
 
@@ -24,9 +24,7 @@ app.use(bodyParser.json());
 app.use('/api', postsRoute);
 
 // Db connect
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('database connected'))
-    .catch(() => console.log('database not connected'));
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 // server is running

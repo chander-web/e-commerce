@@ -1,17 +1,17 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 export const successMsg = (msg) => {
-    toast.success(msg);
-}
+  toast.success(msg);
+};
 
 export const errorMsg = (msg) => {
-    toast.error(msg);
-}
+  toast.error(msg);
+};
 
 export const warnMsg = (msg) => {
-    toast.warn(msg);
-}
+  toast.warn(msg);
+};
 
 export const infoMsg = (msg) => {
-    toast.info(msg);
-}
+  toast.info(msg);
+};

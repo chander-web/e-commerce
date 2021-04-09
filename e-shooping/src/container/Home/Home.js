@@ -8,8 +8,7 @@ import TopMenu from '../../components/TopMenu';
 import AxiosInstanceCopy from '../../helpers/axiosInstance';
 import Routes from '../../routes/Routes';
 import './Home.css';
-
-
+const React = require('react');
 
 
 
@@ -18,27 +17,27 @@ import './Home.css';
 
 function Home() {
 
-    return (
-        <>
-            <AxiosInstanceCopy />
-            <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar
-                newestOnTop
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable={false}
-                pauseOnHover
-            />
+  return (
+    <React.Fragment>
+      <AxiosInstanceCopy />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={true}
+      />
 
-            <Header />
-            <TopMenu />
-            <Routes />
-            <Footer />
-        </>
-    );
+      <Header />
+      <TopMenu />
+      <Routes />
+      <Footer />
+    </React.Fragment>
+  );
 }
 
 export default Home;
