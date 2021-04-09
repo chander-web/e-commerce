@@ -45,7 +45,7 @@
             }
         ],
         "no-native-reassign": 1,
-        "no-return-assign": 1,
+        "no-return-assign": 0,
         "no-constant-condition": 1,
         "no-caller": 1,
         "no-loop-func": 1,
@@ -145,7 +145,8 @@
             }
         ],
         /**
-       * React JSX */
+       * React JSX
+       */
         "react/display-name": 0,
         "react/jsx-boolean-value": [
             1,

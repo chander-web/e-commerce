@@ -5,5 +5,6 @@ export const APIURL = {
   ALLPRODUCTS: 'products/allProducts',
   ALLCATEGORY: 'category/allCategory',
   SINGLE_PRODUCT: 'products/selectedProduct',
-  BASE_PATH: 'http://localhost:4000/'
+  BASE_PATH: 'http://localhost:4000/',
+  PRODUCT_OFFERS: 'common/allOffers'
 };
