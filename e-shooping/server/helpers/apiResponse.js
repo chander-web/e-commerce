@@ -58,8 +58,7 @@ exports.successResponseWithListPagination = (res, data) => {
 
 exports.validationError = (res, msg) => {
   var resData = {
-    status: false,
-    message: msg,
+    message: msg
   };
   return res.status(400).json(resData);
 };

@@ -2,9 +2,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
+var morgan = require('morgan');
+
 
 require('dotenv').config();
-
 
 
 
@@ -18,6 +20,8 @@ app.use(express.static('public'));
 // middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(morgan('dev'));
+app.use(helmet.hidePoweredBy());
 
 
 
