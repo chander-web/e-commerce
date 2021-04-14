@@ -3,7 +3,7 @@ export const APIURL = {
   LOGIN: 'auth/login',
   REGISTER: 'auth/register',
   ALLPRODUCTS: 'products/allProducts',
-  ALLCATEGORY: 'category/allCategory',
+  ALL_MENU: 'menu/getAllMenu',
   SINGLE_PRODUCT: 'products/selectedProduct',
   BASE_PATH: 'http://localhost:4000/',
   PRODUCT_OFFERS: 'common/allOffers'
