@@ -20,8 +20,8 @@ const Routes = () => {
           <Route exact={true} path="/" component={LandingView} />
           <Route path="/login" component={SignInView} />
           <Route path="/register" component={SignUpView} />
-          <Route path="/products/details/:productId" component={ProductDetails} />
-          <Route exact={true} path="/products/:data" component={MainView} />
+          <Route path="/products/details/:slug" component={ProductDetails} />
+          <Route exact={true} path="/products/:slug" component={MainView} />
         </Switch>
       </Suspense>
     </>

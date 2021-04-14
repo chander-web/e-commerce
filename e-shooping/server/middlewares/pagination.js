@@ -7,7 +7,6 @@ exports.pagination = (model) => {
 
       const productsResult = await model.find({ categoryType: type }, {categoryType: 0, productStock: 0, categoryId: 0, offers: 0, soldBy: 0, _id: 0 }).skip(startIndex).limit(parseInt(pageSize));
       const totalItemCount = await model.find({ categoryType: type }).count();
-    
       if (productsResult) {
         res.paginatedResult = productsResult;
         res.totalItemCount = totalItemCount;
