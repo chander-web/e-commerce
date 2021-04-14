@@ -8,8 +8,8 @@ const productCategory = Joi.object({
   description: Joi.string().required(),
   soldBy: Joi.string().required(),
   offers: Joi.boolean(),
-  categoryId: Joi.string().required()
-
+  categoryId: Joi.string().required(),
+  categoryType: Joi.string()
 
 });
 

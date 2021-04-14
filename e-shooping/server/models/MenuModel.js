@@ -9,5 +9,5 @@ const menuSchema = new Schema({
 }, {versionKey: false});
 
 
-module.exports = mongoose.model('menu', menuSchema);
+module.exports = mongoose.model('Menus', menuSchema);
 

@@ -12,9 +12,10 @@ const ProductsModel = require('../models/productsModel');
 router.post('/saveProducts', imageUploader.simpleUploadExecute('products'),
   productsValidation.saveProductsValidation, productsController.saveProducts);
 
-router.post('/allProducts', paginationMiddleware.pagination(ProductsModel), productsController.allProducts);
 
-router.get('/selectedProduct/:id', productsController.selectedProduct);
+router.get('/listProducts', paginationMiddleware.pagination(ProductsModel), productsController.listProducts);
+
+router.get('/productDetail/:slug', productsController.productDetail);
 
 
 module.exports = router;
