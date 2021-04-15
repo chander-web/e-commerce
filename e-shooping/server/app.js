@@ -29,6 +29,7 @@ app.use('/api', postsRoute);
 
 // Db connect
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
 
 
 // server is running

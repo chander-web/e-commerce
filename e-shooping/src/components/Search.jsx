@@ -1,28 +1,52 @@
-import { ReactComponent as IconSearch } from 'bootstrap-icons/icons/search.svg';
 import React from 'react';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 const Search = () => {
+
+  const items = [
+    {
+      id: 0,
+      name: 'Cobol'
+    },
+    {
+      id: 1,
+      name: 'JavaScript'
+    },
+    {
+      id: 2,
+      name: 'Basic'
+    },
+    {
+      id: 3,
+      name: 'PHP'
+    },
+    {
+      id: 4,
+      name: 'Java'
+    }
+  ];
+
+  const handleOnSearch = (string, results) => {
+    console.log(string, results);
+  };
+
+  const handleOnSelect = (item) => {
+    console.log(item);
+  };
+
+  const handleOnFocus = () => {
+    console.log('Focused');
+  };
   return (
-    <form action="#" className="search">
-      <div className="input-group">
-        <input
-          id="search"
-          name="search"
-          type="text"
-          className="form-control"
-          placeholder="Search"
-          required={true}
-        />
-        <label className="visually-hidden" htmlFor="search" />
-        <button
-          className="btn btn-primary text-white"
-          type="submit"
-          aria-label="Search"
-        >
-          <IconSearch />
-        </button>
-      </div>
-    </form>
+    <header className = "App-header" >
+      <ReactSearchAutocomplete
+        items={items}
+        onSearch={handleOnSearch}
+        onSelect={handleOnSelect}
+        onFocus={handleOnFocus}
+        autoFocus={true}
+      />
+    </header >
   );
 };
 export default Search;
