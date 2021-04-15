@@ -7,13 +7,13 @@ import { useParams } from 'react-router-dom';
 import { APIURL } from '../../helpers/constrants';
 
 const Details = () => {
-  const { productId } = useParams();
+  const { slug } = useParams();
   const [products, setProduct] = useState({});
 
   useEffect(() => {
     const loadProduct = async() => {
-      const result = await axios.get(`${APIURL.SINGLE_PRODUCT}/${productId}`);
-      setProduct(result.data.data);
+      const result = await axios.get(`${APIURL.PRODUCT_DETAIL}/${slug}`);
+      setProduct(result.data.data[0]);
     };
     loadProduct();
   }, []);

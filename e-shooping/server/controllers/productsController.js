@@ -1,28 +1,39 @@
 const apiResponse = require('../helpers/apiResponse');
 require('dotenv').config();
 const ProductsModel = require('../models/productsModel');
+const MenuModel = require('../models/MenuModel');
+const slugify = require('slugify');
+const mongoose = require('mongoose');
 
-exports.saveProducts = [(req, res) => {
-  const products = new ProductsModel(req.body);
+exports.saveProducts = [async(req, res) => {
+  const menuList = await MenuModel.find({_id: req.body.categoryId});
+  const apiReq = {
+    ...req.body,
+    slug: slugify(req.body.productTitle),
+    categoryType: menuList[0].slug
+
+  };
+  const products = new ProductsModel(apiReq);
   products.image = `products/${req.file.filename}`;
-  products.save()
-    .then(data => {
-      apiResponse.successResponseWithData(res, 'Products created SuccesFully', data);
-    });
+  products.save((error, product) => {
+    if (error) return apiResponse.successResponse(res, 'Duplicate Entry');
+    if (product) return apiResponse.successResponseWithData(res, 'Products created SuccesFully', product);
+
+  });
 }];
 
 
-exports.allProducts = [async(req, res) => {
+
+exports.listProducts = [async(req, res) => {
   apiResponse.successResponseWithListPagination(res, res.paginatedResult);
 }];
 
 
-exports.selectedProduct = [async(req, res) => {
+exports.productDetail = [async(req, res) => {
   try {
-    const id = req.params.id;
-    const productResult = await ProductsModel.findById(id, { categoryId: 0 });
-
-    if (productResult) {
+    const slug = req.params.slug;
+    const productResult = await ProductsModel.find({ slug: slug });
+    if (productResult) { 
       apiResponse.successResponseWithList(res, productResult);
     }
   } catch (e) {
