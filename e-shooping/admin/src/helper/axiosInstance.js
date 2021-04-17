@@ -1,17 +1,14 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Spinner from '../components/spinner/Spinner';
-import { startLoading, stopLoading } from '../redux/spinner/spinnerAction';
-import { APIURL } from './constrants';
+import Spinner from '../../src/components/spinner/Spinner';
+import { startLoading, stopLoading } from '../../src/redux/spinner/spinnerAction';
+import { APIURL } from '../helper/constants';
 const React = require('react');
-
 const baseURL = APIURL.API_BASE_URL;
 
 const AxiosInstanceCopy = () => {
   const dispatch = useDispatch();
-
-
   // setting token
   const setAuthorization = ({ headers }) => {
     if (localStorage.authToken) {
@@ -25,7 +22,6 @@ const AxiosInstanceCopy = () => {
       config.url = baseURL + config.url;
       setAuthorization(config);
       dispatch(startLoading());
-
       return config;
     }, function (error) {
       // Do something with request error

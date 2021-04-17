@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 const HomePage = () => {
     return <>
@@ -10,4 +10,4 @@ const HomePage = () => {
         </Row>
     </>;
 }
-export default HomePage
+export default HomePage;
