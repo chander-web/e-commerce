@@ -25,3 +25,23 @@ exports.autoComplete = [async(req, res) => {
 
 }];
 
+
+
+exports.list = [async(req, res) => {
+  try {
+    const value = req.body.type.toLowerCase();
+    const allMenu = await MenuModel.find({});
+    //  const result = search();
+    console.log(allMenu);
+
+  } catch (e) {
+    apiResponse.errorResponse(res, 'some error occurred while retrieving category.');
+  }
+
+}];
+
+// const search = () => {
+// const searchResult = [];
+//     const searchListFromMenuSchema = allMenu.find(res => res.slug.toLowerCase() === value);
+
+// };

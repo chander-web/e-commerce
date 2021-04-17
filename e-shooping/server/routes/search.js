@@ -6,6 +6,7 @@ const searchController = require('../controllers/searchController');
 // base url :- api/search
 
 router.get('/autoComplete', searchController.autoComplete);
+router.post('/list', searchController.list);
 
 
 

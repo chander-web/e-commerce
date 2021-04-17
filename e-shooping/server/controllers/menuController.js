@@ -7,17 +7,25 @@ const slugify = require('slugify');
 exports.create = [async(req, res) => {
   const createObj = {
     name: req.body.name,
-    slug: slugify(req.body.name)
+    slug: slugify(req.body.name),
   };
 
   if (req.body.parentId) {
     createObj.parentId = req.body.parentId;
+
+    const selectParentItem = await MenuModel.find({ _id: req.body.parentId });
+
+
+
   }
+
+
   const category = new MenuModel(createObj);
   category.save((error, cate) => {
     if (error) return apiResponse.successResponse(res, 'Duplicate Entry');
     if (cate) return apiResponse.successResponseWithData(res, 'Menu created SuccesFully', cate);
   });
+  
 }];
 
 

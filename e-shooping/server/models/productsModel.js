@@ -11,7 +11,8 @@ const productsSchema = new Schema({
   soldBy: { type: String, required: true },
   categoryId: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
-  categoryType: { type: String }
+  categoryType: { type: String },
+  reationShip: { type: String }
 
 }, { versionKey: false });
 
