@@ -1,5 +1,5 @@
 const apiResponse = require('../helpers/apiResponse');
-const MenuModel = require('../models/MenuModel');
+const ProductsModel = require('../models/productsModel');
 
 
 exports.autoComplete = [async(req, res) => {
@@ -7,16 +7,23 @@ exports.autoComplete = [async(req, res) => {
     
     const type = req.query.type.toLowerCase();
     if (type) {
-      const allMenu = await MenuModel.find({});
-      const filterResult = allMenu.filter(item => {
-        const items = item.slug.toLowerCase();
-        if (items.match(new RegExp(`${type}`, 'g'))) {
-          return item;
+      let result = [];
+      const productsResult = await ProductsModel.find({});
+      productsResult.forEach(item => {
+        const productData = item.reationShip.toLowerCase();
+        if (productData.match(new RegExp(`${type}`, 'g'))) {
+          // return item.productTitle;
+          const data = {
+            id: item._id,
+            name: item.slug
+          };
+          result.push(data);
         }
       });
-      apiResponse.successResponseWithData(res, '', filterResult);
+
+      apiResponse.successResponseWithData(res, '', result);
     } else {
-      apiResponse.errorResponse(res, 'some error occurred while retrieving category.');
+      apiResponse.successResponseWithData(res, '', []);
 
     }
   } catch (e) {
@@ -26,22 +33,3 @@ exports.autoComplete = [async(req, res) => {
 }];
 
 
-
-exports.list = [async(req, res) => {
-  try {
-    const value = req.body.type.toLowerCase();
-    const allMenu = await MenuModel.find({});
-    //  const result = search();
-    console.log(allMenu);
-
-  } catch (e) {
-    apiResponse.errorResponse(res, 'some error occurred while retrieving category.');
-  }
-
-}];
-
-// const search = () => {
-// const searchResult = [];
-//     const searchListFromMenuSchema = allMenu.find(res => res.slug.toLowerCase() === value);
-
-// };

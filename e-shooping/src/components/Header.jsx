@@ -1,5 +1,6 @@
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import { ReactComponent as IconBellFill } from 'bootstrap-icons/icons/bell-fill.svg';
 import { ReactComponent as IconCart3 } from 'bootstrap-icons/icons/cart3.svg';
 import { ReactComponent as IconDoorClosedFill } from 'bootstrap-icons/icons/door-closed-fill.svg';
@@ -8,11 +9,30 @@ import { ReactComponent as IconInfoCircleFill } from 'bootstrap-icons/icons/info
 import { ReactComponent as IconListCheck } from 'bootstrap-icons/icons/list-check.svg';
 import { ReactComponent as IconPersonBadgeFill } from 'bootstrap-icons/icons/person-badge-fill.svg';
 import { ReactComponent as IconStarFill } from 'bootstrap-icons/icons/star-fill.svg';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { APIURL } from '../helpers/constrants';
 import Search from './Search';
 
 const Header = () => {
+  const [searchResult, setSearchResult] = useState([]);
+
+  const searchHandler = (value) => { 
+    loadSearch(value);
+  };
+
+  const loadSearch = async(value) => {
+    
+    const requestOptions = {
+      type: value
+    };
+    const result = await axios.get(APIURL.SEARCH_AUTOCOMPLETE, {
+      params: {
+        ...requestOptions
+      }
+    });
+    setSearchResult(result.data.data);
+  };
   return (
     <React.Fragment>
       <header className="p-3 border-bottom bg-light">
@@ -28,7 +48,10 @@ const Header = () => {
             </div>
             <div className="col-md-5">
               {/* top search */}
-              <Search />
+              <Search 
+                searchKeyWord={searchHandler}
+                items = {searchResult}
+              />
             </div>
             <div className="col-md-4">
               <div className="position-relative d-inline mr-3">
@@ -113,3 +136,8 @@ const Header = () => {
   );
 };
 export default Header;
+
+
+
+
+

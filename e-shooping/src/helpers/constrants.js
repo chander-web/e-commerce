@@ -6,5 +6,6 @@ export const APIURL = {
   ALL_MENU: 'menu/getAllMenu',
   PRODUCT_DETAIL: 'products/productDetail',
   BASE_PATH: 'http://localhost:4000/',
-  PRODUCT_OFFERS: 'common/allOffers'
+  PRODUCT_OFFERS: 'common/allOffers',
+  SEARCH_AUTOCOMPLETE: 'search/autoComplete'
 };

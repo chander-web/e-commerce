@@ -56,6 +56,30 @@
     float: left !important;
 }
 
+.App-header .wrapper {
+    z-index: 9999!important;
+}
+
+.search-results { 
+    position: absolute;
+    width: 100%;
+    background: white;
+    list-style:none;
+    top: 38px;
+    z-index: 99999;
+    padding-left: 0px;
+    text-indent: 13px;
+}
+
+    .search-results li {
+        border-bottom: 1px solid #e8e8e8;
+        padding: 10px 0;
+    }
+    .search-results li:hover {
+        background: #efefef;
+        font-weight: 600;
+    }
+
 .pagination .active a {
     z-index: 3;
     color: #fff;

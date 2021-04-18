@@ -95,7 +95,7 @@ const Main = () => {
                     );
                   })} */}
             {products.map(product => 
-              <CardProductGrid data={product} />
+              <CardProductGrid data={product} key={product._id} />
             )}
 
           </div>
