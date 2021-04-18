@@ -1,6 +1,16 @@
-import React from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import React, { useEffect, useState } from 'react';
+import { APIURL } from '../helper/constants';
 import { Row, Col } from 'react-bootstrap';
+
 const CategoryPage = () => {
+    const [setCategory] = useState([]);
+    useEffect(async () => {
+        // eslint-disable-next-line no-undef
+        const productCategoryResult = await axios.get(APIURL.CATEGORY_PATH);
+        setCategory(productCategoryResult.data.data);
+    }, []);
     return <>
         <Row>
             <Col sm={6} md={6} lg={4} xl={6}>

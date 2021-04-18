@@ -12,9 +12,6 @@ const React = require('react');
 
 
 
-
-
-
 function Home() {
 
   return (
@@ -31,7 +28,6 @@ function Home() {
         draggable={false}
         pauseOnHover={true}
       />
-
       <Header />
       <TopMenu />
       <Routes />
