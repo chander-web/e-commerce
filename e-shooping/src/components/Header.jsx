@@ -33,6 +33,9 @@ const Header = () => {
     });
     setSearchResult(result.data.data);
   };
+
+
+  
   return (
     <React.Fragment>
       <header className="p-3 border-bottom bg-light">
@@ -135,7 +138,13 @@ const Header = () => {
     </React.Fragment>
   );
 };
+
+
+
+
 export default Header;
+
+
 
 
 

@@ -68,8 +68,10 @@ const Search = ({ searchKeyWord, items }) => {
 };
 
 Search.propTypes = {
+  searchKeyWord: PropTypes.func,
   suggestion: PropTypes.instanceOf(Array),
-  selectedValue: PropTypes.func
+  selectedValue: PropTypes.func,
+  items: PropTypes.array
 };
 
 export default Search;
