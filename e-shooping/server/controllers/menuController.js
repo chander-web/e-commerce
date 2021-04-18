@@ -12,11 +12,7 @@ exports.create = [async(req, res) => {
 
   if (req.body.parentId) {
     createObj.parentId = req.body.parentId;
-
-    const selectParentItem = await MenuModel.find({ _id: req.body.parentId });
-
-
-
+    await MenuModel.find({ _id: req.body.parentId });
   }
 
 

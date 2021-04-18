@@ -20,25 +20,25 @@ const AxiosInstanceCopy = () => {
     }
   };
   useEffect(() => {
-    axios.interceptors.request.use(function (config) {
+    axios.interceptors.request.use(function(config) {
       // Do something before request is sent
       config.url = baseURL + config.url;
       setAuthorization(config);
       dispatch(startLoading());
 
       return config;
-    }, function (error) {
+    }, function(error) {
       // Do something with request error
       dispatch(stopLoading());
       return Promise.reject(error);
     });
 
 
-    axios.interceptors.response.use(function (response) {
+    axios.interceptors.response.use(function(response) {
       // Do something with response data
       dispatch(stopLoading());
       return response;
-    }, function (error) {
+    }, function(error) {
       dispatch(stopLoading());
       // const statusCode = error.response.status;
       // const statusMessage = error.response.data.message;

@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { APIURL } from '../helper/constants';
-import { Row, Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
+import { APIURL } from '../helper/adminConstants';
 
 const CategoryPage = () => {
     const [setCategory] = useState([]);
     useEffect(async () => {
-        // eslint-disable-next-line no-undef
         const productCategoryResult = await axios.get(APIURL.CATEGORY_PATH);
         setCategory(productCategoryResult.data.data);
     }, []);
