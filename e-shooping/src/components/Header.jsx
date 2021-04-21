@@ -10,15 +10,20 @@ import { ReactComponent as IconListCheck } from 'bootstrap-icons/icons/list-chec
 import { ReactComponent as IconPersonBadgeFill } from 'bootstrap-icons/icons/person-badge-fill.svg';
 import { ReactComponent as IconStarFill } from 'bootstrap-icons/icons/star-fill.svg';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { APIURL } from '../helpers/constrants';
 import Search from './Search';
 
 const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
+  const history = useHistory();
 
   const searchHandler = (value) => { 
     loadSearch(value);
+  };
+
+  const searhBtnTriggered = (value) => {
+    history.push(`/products/${value}`);
   };
 
   const loadSearch = async(value) => {
@@ -53,6 +58,7 @@ const Header = () => {
               {/* top search */}
               <Search 
                 searchKeyWord={searchHandler}
+                searhBtnTriggered= {searhBtnTriggered}
                 items = {searchResult}
               />
             </div>

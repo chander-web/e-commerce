@@ -7,27 +7,26 @@ import { APIURL } from '../../helpers/constrants';
 import './menu.css';
 const Menu = ({ data }) => {
   return (
-    <p />
-    // data.map(m => {
-    //   return (
-    //     <li key={m._id}>
-    //       <Link className="nav-link" to={`/products/${m.slug}`}>
-    //         {m.name}
-    //       </Link>
+    data.map(m => {
+      return (
+        <li key={m._id}>
+          <Link className="nav-link" to={`/products/${m.slug}`}>
+            {m.name}
+          </Link>
 
-  //       {m.children.length > 0 && (
-  //         <ul key={m._id}>
-  //           <li>
-  //             <Link className="nav-link" to={`/products/${data.slug}`}>
-  //               <Menu data={m.children} />
-  //             </Link></li>
-  //         </ul>
-  //       )
-  //       }
-  //     </li>
-  //   );
-  // }
-  // )
+          {m.children.length > 0 && (
+            <ul key={m._id}>
+              <li>
+                <Link className="nav-link" to={`/products/${data.slug}`}>
+                  <Menu data={m.children} />
+                </Link></li>
+            </ul>
+          )
+          }
+        </li>
+      );
+    }
+    )
   );
 };
 

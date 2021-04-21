@@ -21,11 +21,14 @@ const SearchResults = ({suggestion, selectedValue}) => {
   );
 };
 
-const Search = ({ searchKeyWord, items }) => {
+const Search = ({ searchKeyWord, items, searhBtnTriggered }) => {
   const [status, setAutocompletStatus] = useState(true);
+  const [searchValue, setSearchValue] = useState(true);
+
   const handleOnSearch = (e) => {
     const value = e.target.value;
     if (value) {
+      setSearchValue(value);
       setAutocompletStatus(true);
       searchKeyWord(value);
     } else {
@@ -35,8 +38,14 @@ const Search = ({ searchKeyWord, items }) => {
   
 
   const selectedValue = (v) => {
+    setSearchValue(v);
+
     document.getElementById('search').value = v;
     setAutocompletStatus(false);
+  };
+
+  const searchEvent = () => {
+    searhBtnTriggered(searchValue);
   };
 
   
@@ -54,6 +63,7 @@ const Search = ({ searchKeyWord, items }) => {
         className="btn btn-primary text-white"
         type="submit"
         aria-label="Search"
+        onClick={searchEvent}
       >
         <IconSearch />
       </button>
@@ -69,6 +79,7 @@ const Search = ({ searchKeyWord, items }) => {
 
 Search.propTypes = {
   searchKeyWord: PropTypes.func,
+  searhBtnTriggered: PropTypes.func,
   suggestion: PropTypes.instanceOf(Array),
   selectedValue: PropTypes.func,
   items: PropTypes.array
