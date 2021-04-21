@@ -10,16 +10,17 @@ const Menu = ({ data }) => {
     data.map(m => {
       return (
         <li key={m._id}>
-          <Link className="nav-link" to={`/products/${m.slug}`}>
+          <Link to={`/products/${m.slug}`}>
             {m.name}
           </Link>
 
           {m.children.length > 0 && (
-            <ul key={m._id}>
-              <li>
-                <Link className="nav-link" to={`/products/${data.slug}`}>
-                  <Menu data={m.children} />
-                </Link></li>
+            <ul >  
+              <li key={m._id}>
+                <Link to={`/products/${data.slug}`}>
+                  <Menu data={m.children} key={m._id}/>
+                </Link>
+              </li>
             </ul>
           )
           }

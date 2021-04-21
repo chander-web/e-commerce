@@ -23,7 +23,7 @@ const SearchResults = ({suggestion, selectedValue}) => {
 
 const Search = ({ searchKeyWord, items, searhBtnTriggered }) => {
   const [status, setAutocompletStatus] = useState(true);
-  const [searchValue, setSearchValue] = useState(true);
+  const [searchValue, setSearchValue] = useState(null);
 
   const handleOnSearch = (e) => {
     const value = e.target.value;

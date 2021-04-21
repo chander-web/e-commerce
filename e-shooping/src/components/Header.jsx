@@ -23,7 +23,9 @@ const Header = () => {
   };
 
   const searhBtnTriggered = (value) => {
-    history.push(`/products/${value}`);
+    if (value) {
+      history.push(`/products/${value}`);
+    }
   };
 
   const loadSearch = async(value) => {
