@@ -14,7 +14,6 @@ const Main = () => {
 
   const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  let _totalCount;
   const params = useParams();
   const requestOptions = {
     type: params.slug,
@@ -31,7 +30,6 @@ const Main = () => {
           ...requestOptions
         }
       });
-      _totalCount = result.data.totalCount;
       setProducts(result.data.data);
       setTotalCount(result.data.totalCount);
 
@@ -111,7 +109,7 @@ const Main = () => {
           }
           {/* pagination */}
           <hr />
-          {_totalCount > 10 ?
+          {totalCount > 10 ?
             <Pagination
               activePage={apiRequest.page}
               itemsCountPerPage={apiRequest.pageSize}

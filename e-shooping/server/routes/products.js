@@ -4,8 +4,6 @@ const router = express.Router();
 const productsController = require('../controllers/productsController');
 const productsValidation = require('../validations/products/productsValiation');
 const imageUploader = require('../helpers/imageUpload');
-const paginationMiddleware = require('../middlewares/pagination');
-const ProductsModel = require('../models/productsModel');
 
 // base url :- api/products
 
@@ -13,11 +11,13 @@ router.post('/saveProducts', imageUploader.simpleUploadExecute('products'),
   productsValidation.saveProductsValidation, productsController.saveProducts);
 
 
-router.get('/listProducts', paginationMiddleware.pagination(ProductsModel), productsController.listProducts);
+router.get('/listProducts', productsController.listProducts);
 
 router.get('/productDetail/:slug', productsController.productDetail);
 
 
 module.exports = router;
+
+
 
 
