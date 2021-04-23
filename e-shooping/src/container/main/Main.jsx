@@ -27,7 +27,7 @@ const Main = () => {
     const loadProducts = async() => {
       const result = await axios.get(APIURL.LIST_PRODUCTS, {
         params: {
-          ...requestOptions
+          ...apiRequest
         }
       });
       setProducts(result.data.data);
@@ -35,13 +35,16 @@ const Main = () => {
 
     };
     loadProducts();
-  }, [params.slug]);
-
+  }, [apiRequest]);
+  useEffect(() => {
+    setApiRequest(requestOptions);
+  }, [params]);
 
 
 
   const handlePageChange = (pageNumber) => {
     requestOptions.page = pageNumber;
+    requestOptions.type = params.slug;
     setApiRequest(requestOptions);
 
   };
