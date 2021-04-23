@@ -87,6 +87,8 @@
     border-color: #0d6efd;
 }
 
+.product_not_found {padding: 85px 0;}
+
 .pagination li:first-child a {
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;

@@ -15,7 +15,7 @@ const Menu = ({ data }) => {
           </Link>
 
           {m.children.length > 0 && (
-            <ul >  
+            <ul>  
               <li key={m._id}>
                 <Link to={`/products/${data.slug}`}>
                   <Menu data={m.children} key={m._id}/>

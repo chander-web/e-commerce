@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ReactComponent as SearchIcon } from 'bootstrap-icons/icons/search.svg';
 import React, { lazy, useEffect, useState } from 'react';
 import Pagination from 'react-js-pagination';
 import { useParams } from 'react-router-dom';
@@ -13,6 +14,7 @@ const Main = () => {
 
   const [products, setProducts] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
+  let _totalCount;
   const params = useParams();
   const requestOptions = {
     type: params.slug,
@@ -22,7 +24,6 @@ const Main = () => {
 
   const [apiRequest, setApiRequest] = useState(requestOptions);
   
- 
   useEffect(() => {
     const loadProducts = async() => {
       const result = await axios.get(APIURL.LIST_PRODUCTS, {
@@ -30,6 +31,7 @@ const Main = () => {
           ...requestOptions
         }
       });
+      _totalCount = result.data.totalCount;
       setProducts(result.data.data);
       setTotalCount(result.data.totalCount);
 
@@ -97,17 +99,28 @@ const Main = () => {
             {products.map(product => 
               <CardProductGrid data={product} key={product._id} />
             )}
-
           </div>
-          <hr />
+          
+          {/* product not found  */}
+          {!products.length ?
+            <div className="product_not_found">
+              <h2><SearchIcon /> We are sorry, no results found.</h2>
+              <p>Please try to search with a different spelling or check out our categories.</p>
+            </div>
+            : null
+          }
           {/* pagination */}
-          <Pagination
-            activePage={apiRequest.page}
-            itemsCountPerPage={apiRequest.pageSize}
-            totalItemsCount={totalCount}
-            pageRangeDisplayed={5}
-            onChange={handlePageChange}
-          />
+          <hr />
+          {_totalCount > 10 ?
+            <Pagination
+              activePage={apiRequest.page}
+              itemsCountPerPage={apiRequest.pageSize}
+              totalItemsCount={totalCount}
+              pageRangeDisplayed={5}
+              onChange={handlePageChange}
+            />
+            : null
+          } 
         </div>
       </div>
 

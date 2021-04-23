@@ -46,6 +46,8 @@ const Search = ({ searchKeyWord, items, searhBtnTriggered }) => {
 
   const searchEvent = () => {
     searhBtnTriggered(searchValue);
+    document.getElementById('search').value = null;
+
   };
 
   
