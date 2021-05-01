@@ -34,12 +34,14 @@ const Menu = ({ data }) => {
 
 
 const TopMenu = () => {
-
   const [allMenus, setMenu] = useState([]);
   useEffect(async() => {
     const result = await axios.get(APIURL.ALL_MENU);
     setMenu(result.data.data);
   }, []);
+
+
+
 
   return (
     <React.Fragment>

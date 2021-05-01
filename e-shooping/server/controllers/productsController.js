@@ -8,7 +8,7 @@ exports.saveProducts = [async(req, res) => {
   const menuList = await MenuModel.find({ _id: req.body.categoryId });
   if (menuList.length) {
     const relation = await realationShip(menuList[0]);
-    relation.push(req.body.productTitle);
+    relation.push(slugify(req.body.productTitle));
 
     const apiReq = {
       ...req.body,

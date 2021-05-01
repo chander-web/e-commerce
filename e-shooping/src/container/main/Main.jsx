@@ -51,52 +51,14 @@ const Main = () => {
   return (
     <div className="container-fluid mb-3">
       <div className="row">
+        {/* category section */}
+        <div className="col-md-3">
+          <p>category</p>
+        </div>
 
-        <div className="col-md-3" />
+        {/* product section */}
         <div className="col-md-9">
-          <div className="btn-group ml-3" role="group">
-            {/* <button
-                        aria-label="Grid"
-                        type="button"
-                        onClick={() => this.onChangeView("grid")}
-                        className={`btn ${
-                            this.state.view === "grid"
-                                ? "btn-primary"
-                                : "btn-outline-primary"
-                            }`}
-                    >
-                        <FontAwesomeIcon icon={faTh} />
-                    </button> */}
-            {/* <button
-                        aria-label="List"
-                        type="button"
-                        onClick={() => this.onChangeView("list")}
-                        className={`btn ${
-                            this.state.view === "list"
-                                ? "btn-primary"
-                                : "btn-outline-primary"
-                            }`}
-                    >
-                        <FontAwesomeIcon icon={faBars} />
-                    </button> */}
-          </div>
           <div className="row g-3">
-            {/* {this.state.view === "grid" &&
-                  this.state.currentProducts.map((product, idx) => {
-                    return (
-                      <div key={idx} className="col-md-4">
-                        <CardProductGrid data={product} />
-                      </div>
-                    );
-                  })}
-                {this.state.view === "list" &&
-                  this.state.currentProducts.map((product, idx) => {
-                    return (
-                      <div key={idx} className="col-md-12">
-                        <CardProductList data={product} />
-                      </div>
-                    );
-                  })} */}
             {products.map(product => 
               <CardProductGrid data={product} key={product._id} />
             )}

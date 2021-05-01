@@ -9,6 +9,8 @@ const commonController = require('../controllers/commonController');
 
 router.get('/allOffers', commonController.allOffers);
 
+router.get('/sidebar/:slug', commonController.sidebar);
+
 
 module.exports = router;
 
