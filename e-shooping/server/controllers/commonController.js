@@ -28,8 +28,8 @@ exports.allOffers = [async(req, res) => {
 exports.sidebar = [async(req, res) => {
   const slug = req.params.slug;
   let allMenu = await MenuModel.aggregate([{
-    $addFields: {topLevel: false}
-  }]);
+    $addFields: {topLevel: false, path: { $concat: [ '/products/', '$slug' ] } 
+    }}]);
   let finalRes = [];
   try {    
     let selectedMenuItem = allMenu.find(item => item.slug === slug);

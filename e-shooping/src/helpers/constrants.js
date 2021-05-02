@@ -7,5 +7,6 @@ export const APIURL = {
   PRODUCT_DETAIL: 'products/productDetail',
   BASE_PATH: 'http://localhost:4000/',
   PRODUCT_OFFERS: 'common/allOffers',
-  SEARCH_AUTOCOMPLETE: 'search/autoComplete'
+  SEARCH_AUTOCOMPLETE: 'search/autoComplete',
+  SIDEBAR: 'common/sidebar'
 };

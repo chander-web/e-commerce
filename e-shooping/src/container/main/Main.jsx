@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { APIURL } from '../../helpers/constrants';
 
 const CardProductGrid = lazy(() => import('../../components/card/CardProductList'));
+const Sidebar = lazy(() => import('../../components/Sidebar'));
 
 
 
@@ -22,8 +23,11 @@ const Main = () => {
   };
 
   const [apiRequest, setApiRequest] = useState(requestOptions);
+  const [sidebar, setSidebarResult] = useState([]);
+
   
   useEffect(() => {
+    // load products
     const loadProducts = async() => {
       const result = await axios.get(APIURL.LIST_PRODUCTS, {
         params: {
@@ -34,6 +38,14 @@ const Main = () => {
       setTotalCount(result.data.totalCount);
 
     };
+      // load sidebar
+    const loadSidebar = async() => {
+      const result = await axios.get(`${APIURL.SIDEBAR}/${params.slug}`);
+      setSidebarResult(result.data.data);
+
+    };
+
+    loadSidebar();
     loadProducts();
   }, [apiRequest]);
   useEffect(() => {
@@ -53,7 +65,7 @@ const Main = () => {
       <div className="row">
         {/* category section */}
         <div className="col-md-3">
-          <p>category</p>
+          <Sidebar items={sidebar} />
         </div>
 
         {/* product section */}
