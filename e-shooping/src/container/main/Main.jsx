@@ -64,9 +64,11 @@ const Main = () => {
     <div className="container-fluid mb-3">
       <div className="row">
         {/* category section */}
-        <div className="col-md-3">
-          <Sidebar items={sidebar} />
-        </div>
+        {sidebar.length > 0 &&
+          <div className="col-md-3">
+            <Sidebar items={sidebar} />
+          </div>
+        }
 
         {/* product section */}
         <div className="col-md-9">
